@@ -6,12 +6,12 @@ const router = createRouter({
     {
       path: "/",
       name: "",
-      component: () => import("../layouts/MainLayout.vue"),
+      component: () => import("@/layouts/MainLayout.vue"),
       children: [
         {
           path: "",
           name: "home",
-          component: () => import("../views/HomeView.vue"),
+          component: () => import("@/views/HomeView.vue"),
         },
       ],
     },
@@ -19,15 +19,17 @@ const router = createRouter({
       path: "/login",
       name: "login",
 
-      component: () => import("../views/LoginView.vue"),
+      component: () => import("@/views/LoginView.vue"),
     },
     {
       path: "/registration",
       name: "registration",
 
-      component: () => import("../views/RegistrationView.vue"),
+      component: () => import("@/views/RegistrationView.vue"),
     },
   ],
 });
+
+router.beforeEach
 
 export default router;

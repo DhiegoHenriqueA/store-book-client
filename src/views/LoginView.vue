@@ -1,8 +1,30 @@
+<script lang="ts" setup>
+import { ref } from "vue";
+interface UserLoginInterface {
+  email: string;
+  password: string;
+}
+
+const user = ref<UserLoginInterface>({
+  email: "",
+  password: "",
+});
+
+const login = () => {
+  alert(user.value.email);
+};
+</script>
+
 <template>
   <div class="box">
     <div>
       <h1>Login</h1>
+      <input type="text" v-model="user.email" />
+      <input type="password" v-model="user.password" />
+      <button @click="login">Login</button>
     </div>
+    <hr />
+    email? {{ user.email }}
   </div>
 </template>
 
