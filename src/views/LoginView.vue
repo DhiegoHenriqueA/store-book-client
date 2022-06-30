@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-interface UserLoginInterface {
-  email: string;
-  password: string;
-}
+import { useUserStore } from "@/stores/user";
+import type { UserLoginInterface } from "@/entities/user";
+
+const userStore = useUserStore();
 
 const user = ref<UserLoginInterface>({
   email: "",
@@ -11,20 +11,23 @@ const user = ref<UserLoginInterface>({
 });
 
 const login = () => {
-  alert(user.value.email);
+  userStore.login();
 };
 </script>
 
 <template>
   <div class="box">
     <div>
-      <h1>Login</h1>
+      <h4>Login</h4>
       <input type="text" v-model="user.email" />
       <input type="password" v-model="user.password" />
       <button @click="login">Login</button>
+      <q-btn color="primary" icon="mail" label="On Left" />
     </div>
     <hr />
     email? {{ user.email }}
+    <hr />
+    loggedIn: {{ userStore.loggedIn }}
   </div>
 </template>
 
