@@ -16,39 +16,83 @@ const login = () => {
 </script>
 
 <template>
-  <div class="box">
-    <div>
-      <h4>Login</h4>
-      <input type="text" v-model="user.email" />
-      <input type="password" v-model="user.password" />
-      <button @click="login">Login</button>
-      <q-btn color="primary" icon="mail" label="On Left" />
-    </div>
-    <hr />
-    email? {{ user.email }}
-    <hr />
-    loggedIn: {{ userStore.loggedIn }}
+  email? {{ user.email }} loggedIn: {{ userStore.loggedIn }}
+
+  <div id="q-app">
+    <q-layout view="lHh Lpr fff">
+      <q-page
+        class="window-height window-width row justify-center items-center"
+        style="background: whitesmoke"
+      >
+        <div class="column q-pa-lg">
+          <div class="row">
+            <q-card
+              square
+              class="shadow-24"
+              style="width: 400px; height: 440px"
+            >
+              <q-card-section class="bg-teal-6">
+                <h4 class="text-h5 text-white q-my-md">Store Book</h4>
+              </q-card-section>
+              <q-card-section>
+                <q-form class="q-px-sm q-pt-xl">
+                  <q-input
+                    ref="email"
+                    square
+                    clearable
+                    v-model="user.email"
+                    type="email"
+                    lazy-rules
+                    :rules="[]"
+                    label="Email"
+                  >
+                    <template v-slot:prepend>
+                      <q-icon name="email" />
+                    </template>
+                  </q-input>
+
+                  <q-input
+                    ref="password"
+                    square
+                    clearable
+                    v-model="user.password"
+                    type="password"
+                    lazy-rules
+                    :rules="[]"
+                    label="Senha"
+                  >
+                    <template v-slot:prepend>
+                      <q-icon name="lock" />
+                    </template>
+                    <template v-slot:append>
+                      <q-icon
+                        :name="visibilityIcon"
+                        @click="switchVisibility"
+                        class="cursor-pointer"
+                      />
+                    </template>
+                  </q-input>
+                </q-form>
+              </q-card-section>
+
+              <q-card-actions class="q-px-lg">
+                <q-btn
+                  unelevated
+                  size="lg"
+                  color="secondary"
+                  @click="login"
+                  class="full-width text-white"
+                  label="Entrar"
+                />
+              </q-card-actions>
+              <q-card-section class="text-center q-pa-sm">
+                <p class="text-grey-6">Esqueceu a senha?</p>
+                <p class="text-grey-6">Cadastre-se?</p>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
+      </q-page>
+    </q-layout>
   </div>
 </template>
-
-<style scoped>
-.box {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.box div {
-  box-shadow: 8px 6px 6px darkgray;
-  width: 480px;
-  height: 320px;
-  position: absolute;
-  top: 0;
-  bottom: 100px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  background-color: whitesmoke;
-}
-</style>

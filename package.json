@@ -7,11 +7,15 @@
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "db:dev": "json-server-relationship --watch db/db.json --port 4000"
   },
   "dependencies": {
     "@quasar/extras": "^1.14.2",
     "@vueuse/core": "^8.7.5",
+    "axios": "^0.27.2",
+    "json-server": "^0.17.0",
+    "json-server-relationship": "^0.14.5",
     "pinia": "^2.0.14",
     "quasar": "^2.7.4",
     "vue": "^3.2.37",
