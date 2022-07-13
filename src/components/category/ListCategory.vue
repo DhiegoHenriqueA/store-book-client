@@ -14,7 +14,12 @@ onMounted(() => {
 });
 </script>
 <template>
-  <button v-for="category of categoriesStore.categories" :key="category.id">
-    {{ category.name }}
-  </button>
+  <q-tabs>
+    <q-tab
+      v-for="category of categoriesStore.categories"
+      :key="category.id"
+      :name="category.name"
+      :label="category.name"
+    ></q-tab>
+  </q-tabs>
 </template>

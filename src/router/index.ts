@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "",
-      component: () => import("@/layouts/MainLayout.vue"),
+      component: () => import("@/layouts/MainLayout2.vue"),
       children: [
         {
           path: "",
@@ -30,6 +30,6 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach
+router.beforeEach;
 
 export default router;

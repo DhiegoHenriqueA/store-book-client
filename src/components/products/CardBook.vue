@@ -8,7 +8,7 @@ const props = defineProps({
 
 <template>
   <q-card class="">
-    <q-img :src="props.data.img" height="220px">
+    <q-img :src="props.data.img" height="280px">
       <q-chip
         v-if="props.data.chip"
         :class="props.data.chip_class"
@@ -17,7 +17,7 @@ const props = defineProps({
       ></q-chip>
     </q-img>
 
-    <q-card-section>
+    <q-card-section style="margin-top: -30px; margin-bottom: -10px">
       <q-btn
         fab
         color="teal-7"
@@ -49,11 +49,11 @@ const props = defineProps({
         />
       </div>
     </q-card-section>
-    <q-card-section>
+    <q-card-section style="margin-top: -20px; margin-bottom: -10px">
       <div class="col-12">
         <span class="text-h6">{{ props.data.amount }}</span>
         <span class="text-h6 float-right">
-          <q-btn label="See Details" rounded color="secondary" outline></q-btn>
+          <q-btn label="Ver Mais" rounded color="secondary" outline></q-btn>
         </span>
       </div>
     </q-card-section>
