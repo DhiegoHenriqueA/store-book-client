@@ -46,7 +46,8 @@
       "img": "src/assets/imgs/books/O-Nome-do-Vento.jpg",
       "chip": "Discount 90%",
       "chip_color": "grey-4",
-      "chip_class": "text-blue absolute-top-right"
+      "chip_class": "text-blue absolute-top-right",
+      "quantity_available": 0
     },
     {
       "id": 2,

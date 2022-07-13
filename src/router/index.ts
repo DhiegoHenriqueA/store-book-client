@@ -18,7 +18,7 @@ const router = createRouter({
           path: "comprar/:id",
           name: "purchase",
           component: () => import("@/views/PurchaseView.vue"),
-        }
+        },
       ],
     },
     {
