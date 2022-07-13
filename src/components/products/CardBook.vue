@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <q-card class="">
+  <q-card class=""> 
     <q-img :src="props.data.img" height="280px">
       <q-chip
         v-if="props.data.chip"
@@ -53,7 +53,7 @@ const props = defineProps({
       <div class="col-12">
         <span class="text-h6">{{ props.data.amount }}</span>
         <span class="text-h6 float-right">
-          <q-btn label="Ver Mais" rounded color="secondary" outline></q-btn>
+          <q-btn :to="{name: 'purchase', params:{ id: props.data.id }}" label="Ver Mais" rounded color="secondary" outline></q-btn>
         </span>
       </div>
     </q-card-section>
