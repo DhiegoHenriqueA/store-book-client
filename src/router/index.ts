@@ -19,6 +19,11 @@ const router = createRouter({
           component: () => import("@/views/PurchaseView.vue"),
         },
         {
+          path: "carrinho/:id",
+          name: "shopping-cart",
+          component: () => import("@/views/ShoppingCartView.vue"),
+        },
+        {
           path: "compraFinalizada/",
           name: "purchaseFinish",
           component: () => import("@/views/PurchaseFinishView.vue"),
