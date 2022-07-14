@@ -13,11 +13,15 @@ const router = createRouter({
           name: "home",
           component: () => import("@/views/HomeView.vue"),
         },
-        //TODO - Adicionar id nessa rota
         {
           path: "comprar/:id",
           name: "purchase",
           component: () => import("@/views/PurchaseView.vue"),
+        },
+        {
+          path: "carrinho/:id",
+          name: "shopping-cart",
+          component: () => import("@/views/ShoppingCartView.vue"),
         },
       ],
     },
