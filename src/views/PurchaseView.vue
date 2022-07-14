@@ -1,23 +1,32 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-import { ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { ref, onMounted, reactive } from "vue";
 import axios from "axios";
+import { usePurchaseStore } from "@/stores/purchase";
 
-const router = useRoute();
-
-const book = ref([]);
+const route = useRoute();
+const router = useRouter();
+const purchaseStore = usePurchaseStore();
+const book = reactive({ quantity: 1 });
 
 onMounted(async () => {
-  await findBook(router.params.id);
+  await findBook(route.params.id);
 });
 
 const findBook = (id) => {
   axios
     .get(`http://localhost:4000/books/${id}`)
     .then((response) => {
-      book.value = response.data;
+      Object.assign(book, response.data);
     })
     .catch((error) => console.log(error));
+};
+
+const finishPurchase = () => {
+  purchaseStore.createFinishPurchase([book]).then(() => {
+    router.push({ name: "purchaseFinish" });
+    console.log("aaaaa");
+  });
 };
 </script>
 <template>
@@ -37,7 +46,7 @@ const findBook = (id) => {
           </div>
 
           <div class="q-mt-md">
-            <input value="0" type="number" class="q-ma-lg" />
+            <input v-model="book.quantity" type="number" class="q-ma-lg" />
           </div>
           <div class="q-mt-md">
             <q-btn
@@ -46,13 +55,13 @@ const findBook = (id) => {
               text-color="black"
               label="Adiconar ao Carinho"
             />
-            <q-btn color="secondary" label="Comprar" />
+            <q-btn @click="finishPurchase" color="secondary" label="Comprar" />
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  {{ book.quantity }}
   <div class="q-pa-md" style="justify-content: center; display: flex">
     <div class="shadow-2 rounded-borders container row">
       <div class="q-pa-md col-9 row" style="height: 35vh">
