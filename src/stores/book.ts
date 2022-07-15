@@ -5,6 +5,7 @@ export const useBookStore = defineStore({
   id: "book",
   state: () => ({
     books: [],
+    currentBook: [],
   }),
 
   actions: {
@@ -20,19 +21,25 @@ export const useBookStore = defineStore({
         return Promise.reject("Erro desconhecido ao consultar 'Books'");
       }
     },
-    async getBook(id: string) {
+    async getBookById(id: number) {
       try {
-        const { data } = await axios.get(
-          "http://localhost:4000/books/".concat(id)
-        );
-        this.books = data;
+        const { data } = await axios.get(`http://localhost:4000/books/${id}`);
+
+        this.currentBook = data;
+        this.currentBook.quantity = 1;
         return Promise.resolve();
       } catch (e) {
         console.error(e);
         if (e.response.status === 404)
           return Promise.reject(e.response.statusText);
-        return Promise.reject("Erro desconhecido ao consultar 'Books'");
+        return Promise.reject("Erro desconhecido ao consultar 'Livro'");
       }
+    },
+    async incrementQuantity() {
+      this.currentBook.quantity++;
+    },
+    async decrementQuantity() {
+      this.currentBook.quantity--;
     },
   },
 });
