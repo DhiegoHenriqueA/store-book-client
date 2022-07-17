@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { onMounted } from "vue";
+import { usePurchaseStore } from "@/stores/purchase";
+
+const purchaseStore = usePurchaseStore();
+
+onMounted(async () => {
+  await purchaseStore.getPurchaseById(2).catch((error) => {
+    alert(error);
+  });
+});
+</script>
 <template>
     <div class="q-pa-md" style="justify-content: center; display: flex">
         <div class="shadow-2 rounded-borders container">

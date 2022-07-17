@@ -27,7 +27,7 @@ export const useBookStore = defineStore({
 
         this.currentBook = data;
         this.currentBook.quantity = 1;
-        return Promise.resolve();
+        return Promise.resolve(data);
       } catch (e) {
         console.error(e);
         if (e.response.status === 404)

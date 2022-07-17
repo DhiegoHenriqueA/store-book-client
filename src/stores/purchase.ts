@@ -1,5 +1,8 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import { useBookStore } from "./book";
+
+const bookStore = useBookStore()
 
 export const usePurchaseStore = defineStore({
   id: "purchase",
@@ -29,7 +32,13 @@ export const usePurchaseStore = defineStore({
         const { data } = await axios.get(
           `http://localhost:4000/purchases/${id}?embed=purchasesItems`
         );
-
+        if (data.purchasesItems.length > 0) {
+          data.purchasesItems.map(async element => {
+            await bookStore.getBookById(element.bookId).then((res)=>{
+              console.log(res)
+            })
+          });
+        }
         this.currentPurchase = data;
         return Promise.resolve();
       } catch (e) {
@@ -70,7 +79,7 @@ export const usePurchaseStore = defineStore({
           usuarioId: 10, // TODO: pegar id do store
           status: "Carrinho",
         });
-
+        console.log(data)
         this.currentPurchase = data;
         this.carPurchase = data;
 
