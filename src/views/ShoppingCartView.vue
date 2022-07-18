@@ -3,11 +3,12 @@ import { onMounted } from "vue";
 import { usePurchaseStore } from "@/stores/purchase";
 
 const purchaseStore = usePurchaseStore();
-
+let books
 onMounted(async () => {
-  await purchaseStore.getPurchaseById(2).catch((error) => {
+  books = await purchaseStore.getPurchaseById(1).catch((error) => {
     alert(error);
   });
+  console.log(books.purchasesItems)
 });
 </script>
 <template>
@@ -15,7 +16,6 @@ onMounted(async () => {
     <div class="shadow-2 rounded-borders container">
       <div class="q-pa-md">
         <q-card-section>
-          {{ purchaseStore.shoppingCart }}
           <div class="text-h6">Carrinho de compras</div>
           <div class="text-subtitle2">Aqui fica os itens</div>
         </q-card-section>
@@ -30,7 +30,7 @@ onMounted(async () => {
             </tr>
           </thead>
           <tbody>
-            <tr class="shadow-2 rounded-borders" style="height: 120px">
+            <tr v-for="book of books.purchasesItems" class="shadow-2 rounded-borders" style="height: 120px">
               <td class="text-left">
                 <q-card style="height: 100%">
                   <q-img
@@ -39,7 +39,7 @@ onMounted(async () => {
                   />
                 </q-card>
               </td>
-              <td class="text-center"><b>Our Changing Planet</b></td>
+              <td class="text-center"><b>{{book.book.title}}</b></td>
               <td class="text-center">
                 <q-rating
                   v-model="text"

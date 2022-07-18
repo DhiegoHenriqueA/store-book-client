@@ -106,7 +106,7 @@ export const usePurchaseStore = defineStore({
 
         this.currentPurchase = data;
 
-        return Promise.resolve();
+        return Promise.resolve(data);
       } catch (e) {
         console.error(e);
         if (e.response.status === 404)
