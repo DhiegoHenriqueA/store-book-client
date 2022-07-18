@@ -4,11 +4,12 @@ import { ref, onMounted, reactive } from "vue";
 import { storeToRefs } from "pinia";
 import axios from "axios";
 import { usePurchaseStore } from "@/stores/purchase";
+import { useUserStore } from "@/stores/user";
 import { useBookStore } from "@/stores/book";
 
 const purchaseStore = usePurchaseStore();
-
 const bookStore = useBookStore();
+const userStore = useUserStore();
 const { currentBook } = storeToRefs(useBookStore());
 
 const route = useRoute();
@@ -22,12 +23,12 @@ onMounted(async () => {
 
 const realizePurchase = () => {
   purchaseStore
-    .addItemToCar(currentBook.value)
+    .realizePurchase(currentBook.value, userStore.user.id)
     .then((data) => {
-      console.log(purchaseStore.carPurchase);
+      console.log(data);
       router.push({
         name: "purchaseReview",
-        params: { id: purchaseStore.carPurchase.id },
+        params: { id: data.id },
       });
     })
     .catch((error) => {
@@ -36,7 +37,7 @@ const realizePurchase = () => {
 };
 const addItemToCar = () => {
   purchaseStore
-    .addItemToCar(currentBook.value)
+    .addItemToCar(currentBook.value, userStore.user.id)
     .then((data) => {
       alert("Item adicionado no carrinho com sucesso");
     })

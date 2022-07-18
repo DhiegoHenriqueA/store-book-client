@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
+import { useRouter } from "vue-router";
+
 import type { UserLoginInterface } from "@/entities/user";
+
+const router = useRouter();
 
 const userStore = useUserStore();
 
@@ -11,12 +15,21 @@ const user = ref<UserLoginInterface>({
 });
 
 const login = () => {
-  userStore.login();
+  userStore
+    .login(user.value.email, user.value.password)
+    .then(() => {
+      console.log("daleeee");
+      router.push({
+        name: "home",
+      });
+    })
+    .catch(() => {});
 };
 </script>
 
 <template>
-  email? {{ user.email }} loggedIn: {{ userStore.loggedIn }}
+  {{ userStore.user }}
+  {{ userStore.loggedIn }}
 
   <div id="q-app">
     <q-layout view="lHh Lpr fff">

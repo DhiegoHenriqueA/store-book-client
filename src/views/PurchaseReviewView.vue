@@ -11,7 +11,9 @@ const router = useRouter();
 
 onMounted(async () => {
   await purchaseStore.getPurchaseById(route.params.id).catch((error) => {
-    alert(error);
+    router.push({
+      name: "login",
+    });
   });
 });
 

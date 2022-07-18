@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "",
-      component: () => import("@/layouts/MainLayout2.vue"),
+      component: () => import("@/layouts/MainLayout.vue"),
       children: [
         {
           path: "",
