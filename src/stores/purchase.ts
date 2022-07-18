@@ -137,11 +137,9 @@ export const usePurchaseStore = defineStore({
         await this.createPurchaseItem(this.shoppingCart.id, item).then(
           (dataItem) => {
             this.shoppingCart.purchasesItems.push(dataItem);
-
             return Promise.resolve(dataItem);
           }
         );
-        this.shoppingCart.purchasesItems.push(dataItem);
       } else {
         return await this.createPurchase(userId, "Carrinho")
           .then(async (dataPurchase) => {
@@ -176,7 +174,7 @@ export const usePurchaseStore = defineStore({
       }
     },
 
-    async createPurchaseItem(purchaseId: Integer, item: Object) {
+    async createPurchaseItem(purchaseId: number, item: Object) {
       try {
         const { data } = await axios.post(
           "http://localhost:4000/purchasesItems",
@@ -202,6 +200,16 @@ export const usePurchaseStore = defineStore({
           `http://localhost:4000/purchases/${id}`,
           { status: "Realizado" }
         );
+
+        const index = this.pendingPurchases.findIndex(
+          (purchase) => purchase.id === id
+        );
+
+        const finishedPurchase = Object.assign(this.pendingPurchases[index]);
+        finishedPurchase.status = "Realizado";
+
+        this.finishedPurchases.push(finishedPurchase);
+        this.pendingPurchases.splice(index, 1);
 
         return Promise.resolve();
       } catch (e) {
