@@ -6,13 +6,11 @@ const purchaseStore = usePurchaseStore();
 let books: any
 onMounted(async () => {
   await purchaseStore.getPurchaseById(1).then((res)=>{
-    books = res.purchasesItems
-    console.log(books)
+     books = res.purchaseItems
   })
   .catch((error) => {
     alert(error);
   });
-  console.log(books.purchasesItems)
 });
 </script>
 <template>
@@ -34,7 +32,7 @@ onMounted(async () => {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="book of books.purchasesItems" class="shadow-2 rounded-borders" style="height: 120px">
+            <tr class="shadow-2 rounded-borders" style="height: 120px">
               <td class="text-left">
                 <q-card style="height: 100%">
                   <q-img
@@ -43,7 +41,7 @@ onMounted(async () => {
                   />
                 </q-card>
               </td>
-              <td class="text-center"><b>{{book.book.title}}</b></td>
+              <td class="text-center"><b>Titulo</b></td>
               <td class="text-center">
                 <q-rating
                   v-model="text"
