@@ -42,6 +42,20 @@ export const useUserStore = defineStore({
           return Promise.reject();
         });
     },
+    async register(email: string, password: string) {
+      let newUser = Object.assign(this.user);
+      newUser.email = email;
+      newUser.password = password;
+
+      await axios
+        .post("http://localhost:4000/register", newUser)
+        .then(async (data) => {
+          return this.login(email, password);
+        })
+        .catch(() => {
+          return Promise.reject();
+        });
+    },
     async logout() {
       this.loggedIn = false as boolean;
       this.user = {} as User;

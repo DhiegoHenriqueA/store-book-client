@@ -11,7 +11,9 @@ export const useBookStore = defineStore({
   actions: {
     async getAllBooks() {
       try {
-        const { data } = await axios.get("http://localhost:4000/books");
+        const { data } = await axios.get(
+          "http://localhost:4000/books?expand=category&expand=author"
+        );
         this.books = data;
         return Promise.resolve();
       } catch (e) {
@@ -23,7 +25,9 @@ export const useBookStore = defineStore({
     },
     async getBookById(id: number) {
       try {
-        const { data } = await axios.get(`http://localhost:4000/books/${id}`);
+        const { data } = await axios.get(
+          `http://localhost:4000/books/${id}?expand=category&expand=author`
+        );
 
         this.currentBook = data;
         this.currentBook.quantity = 1;

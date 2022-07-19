@@ -17,7 +17,6 @@ const logout = () => {
 <template>
   <q-layout view="lHh lpr lFf" style="height: 400px">
     <q-header elevated class="bg-teal-6">
-      {{ userStore }}
       <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
