@@ -86,7 +86,7 @@
     },
     {
       "id": 2,
-      "title": "Our Changing Planet",
+      "title": "Our Changing Planet 2",
       "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "rating": 4,
       "amount": "R$ 15,00",
@@ -96,7 +96,7 @@
     },
     {
       "id": 3,
-      "title": "Our Changing Planet",
+      "title": "Our Changing  3",
       "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "rating": 1,
       "amount": "R$ 50,00",
@@ -109,7 +109,7 @@
     },
     {
       "id": 4,
-      "title": "Our Changing Planet",
+      "title": "Our Changing  4",
       "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "rating": 5,
       "amount": "R$ 70,00",
@@ -122,7 +122,7 @@
     },
     {
       "id": 5,
-      "title": "Our Changing Planet",
+      "title": "Our Changing Uau",
       "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "rating": 2,
       "amount": "R$ 50,00",
@@ -167,6 +167,11 @@
       "userId": 2,
       "status": "Pendente",
       "id": 6
+    },
+    {
+      "userId": 2,
+      "status": "Pendente",
+      "id": 7
     }
   ],
   "purchasesItems": [
@@ -217,6 +222,30 @@
       "quantity": 4,
       "purchaseId": 6,
       "id": 8
+    },
+    {
+      "bookId": 1,
+      "quantity": 3,
+      "purchaseId": 2,
+      "id": 9
+    },
+    {
+      "bookId": 2,
+      "quantity": 4,
+      "purchaseId": 2,
+      "id": 10
+    },
+    {
+      "bookId": 3,
+      "quantity": 6,
+      "purchaseId": 7,
+      "id": 11
+    },
+    {
+      "bookId": 3,
+      "quantity": 7,
+      "purchaseId": 2,
+      "id": 12
     }
   ]
 }
