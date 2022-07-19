@@ -28,9 +28,6 @@ const login = () => {
 </script>
 
 <template>
-  {{ userStore.user }}
-  {{ userStore.loggedIn }}
-
   <div id="q-app">
     <q-layout view="lHh Lpr fff">
       <q-page
@@ -42,13 +39,13 @@ const login = () => {
             <q-card
               square
               class="shadow-24"
-              style="width: 400px; height: 440px"
+              style="width: 400px; height: 400px"
             >
               <q-card-section class="bg-teal-6">
                 <h4 class="text-h5 text-white q-my-md">Store Book</h4>
               </q-card-section>
               <q-card-section>
-                <q-form class="q-px-sm q-pt-xl">
+                <q-form class="q-px-sm q-pt-md">
                   <q-input
                     ref="email"
                     square
@@ -77,18 +74,11 @@ const login = () => {
                     <template v-slot:prepend>
                       <q-icon name="lock" />
                     </template>
-                    <template v-slot:append>
-                      <q-icon
-                        :name="visibilityIcon"
-                        @click="switchVisibility"
-                        class="cursor-pointer"
-                      />
-                    </template>
                   </q-input>
                 </q-form>
               </q-card-section>
 
-              <q-card-actions class="q-px-lg">
+              <q-card-actions class="q-px-lg q-mt-md">
                 <q-btn
                   unelevated
                   size="lg"
@@ -99,8 +89,10 @@ const login = () => {
                 />
               </q-card-actions>
               <q-card-section class="text-center q-pa-sm">
-                <p class="text-grey-6">Esqueceu a senha?</p>
-                <p class="text-grey-6">Cadastre-se?</p>
+                <span class="text-grey-6 q-mr-sm">Esqueceu a senha?</span>
+                <router-link :to="{ name: 'registration' }"
+                  >Cadastre-se?</router-link
+                >
               </q-card-section>
             </q-card>
           </div>
