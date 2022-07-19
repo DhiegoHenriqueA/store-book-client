@@ -3,9 +3,13 @@ import { onMounted } from "vue";
 import { usePurchaseStore } from "@/stores/purchase";
 
 const purchaseStore = usePurchaseStore();
-let books
+let books: any
 onMounted(async () => {
-  books = await purchaseStore.getPurchaseById(1).catch((error) => {
+  await purchaseStore.getPurchaseById(1).then((res)=>{
+    books = res.purchasesItems
+    console.log(books)
+  })
+  .catch((error) => {
     alert(error);
   });
   console.log(books.purchasesItems)
@@ -59,6 +63,10 @@ onMounted(async () => {
         </q-markup-table>
       </div>
     </div>
+  </div>
+  <!-- TODO - Div for -->
+  <div v-for="book in books">
+    <h1>{{book.bookId}}</h1>
   </div>
 </template>
 
