@@ -14,7 +14,6 @@ const { currentBook } = storeToRefs(useBookStore());
 
 const route = useRoute();
 const router = useRouter();
-
 onMounted(async () => {
   await bookStore.getBookById(route.params.id).catch((error) => {
     alert(error);
@@ -59,12 +58,7 @@ const addItemToCar = () => {
           <div class="text-h6">{{ currentBook.title }}</div>
           <div class="text-subtitle2">{{ currentBook.caption }}</div>
           <div class="text">
-<<<<<<< HEAD
-            {{ currentBook.author }}, {{ currentBook.category }}
-=======
-            <!-- TODO- Verificar -->
             {{ currentBook.author.name }}, {{ currentBook.category.name }}
->>>>>>> 7116a98d95c6cb7b2111f4b672bfdab2b2dcecb9
           </div>
           <div class="q-mt-md">
             <span class="text-h6">{{ currentBook.amount }}</span>

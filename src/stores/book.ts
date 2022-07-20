@@ -5,7 +5,10 @@ export const useBookStore = defineStore({
   id: "book",
   state: () => ({
     books: [],
-    currentBook: [],
+    currentBook: {
+      author: {},
+      category: {}
+    },
   }),
 
   actions: {

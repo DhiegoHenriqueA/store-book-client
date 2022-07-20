@@ -20,7 +20,6 @@ export const usePurchaseStore = defineStore({
         const { data } = await axios.get(
           `http://localhost:4000/purchases?embed=purchasesItems&status=Carrinho&userId=${id}`
         );
-
         if (data.length && data.length > 0) {
           for (const i in data[0].purchasesItems) {
             data[0].purchasesItems[i].book = await bookStore.getBookById(
@@ -134,6 +133,7 @@ export const usePurchaseStore = defineStore({
     },
 
     async addItemToCar(item: Object, userId: number) {
+      console.log(this.shoppingCart)
       if (Object.keys(this.shoppingCart).length !== 0) {
         await this.createPurchaseItem(this.shoppingCart.id, item).then(
           (dataItem) => {
