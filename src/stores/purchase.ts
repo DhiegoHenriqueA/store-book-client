@@ -25,6 +25,7 @@ export const usePurchaseStore = defineStore({
           for (const i in data[0].purchasesItems) {
             data[0].purchasesItems[i].book = await bookStore.getBookById(
               data[0].purchasesItems[i].bookId
+              
             );
           }
         }
@@ -210,6 +211,32 @@ export const usePurchaseStore = defineStore({
 
         this.finishedPurchases.push(finishedPurchase);
         this.pendingPurchases.splice(index, 1);
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+        if (e.response.status === 404)
+          return Promise.reject(e.response.statusText);
+        return Promise.reject("Erro desconhecido ao confirmar 'Compra'");
+      }
+    },
+    // TODO - Verificar essa função
+    async finishedShoppingCartPurchase(id: number) {
+      try {
+        const { data } = await axios.put(
+          `http://localhost:4000/purchases/${id}`,
+          { status: "Realizado" }
+        );
+
+        const index = this.pendingPurchases.findIndex(
+          (purchase) => purchase.id === id
+        );
+
+        const finishedPurchase = Object.assign(this.shoppingCart);
+        finishedPurchase.status = "Realizado";
+
+        // this.finishedPurchases.push(finishedPurchase);
+        // this.shoppingCart = {}
 
         return Promise.resolve();
       } catch (e) {

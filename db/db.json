@@ -183,7 +183,34 @@
     },
     {
       "status": "Realizado",
+<<<<<<< HEAD
       "id": 2
+=======
+      "id": 4
+    },
+    {
+      "status": "Realizado",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "status": "Pendente",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "status": "Pendente",
+      "id": 7
+    },
+    {
+      "status": "Realizado",
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "status": "Pendente",
+      "id": 9
+>>>>>>> 7116a98d95c6cb7b2111f4b672bfdab2b2dcecb9
     }
   ],
   "purchasesItems": [
@@ -198,6 +225,81 @@
       "quantity": 3,
       "purchaseId": 2,
       "id": 2
+<<<<<<< HEAD
+=======
+    },
+    {
+      "bookId": 1,
+      "quantity": 4,
+      "purchaseId": 3,
+      "id": 3
+    },
+    {
+      "bookId": 1,
+      "quantity": 2,
+      "purchaseId": 2,
+      "id": 4
+    },
+    {
+      "bookId": 1,
+      "quantity": 3,
+      "purchaseId": 4,
+      "id": 5
+    },
+    {
+      "bookId": 1,
+      "quantity": 4,
+      "purchaseId": 5,
+      "id": 6
+    },
+    {
+      "bookId": 1,
+      "quantity": 1,
+      "purchaseId": 2,
+      "id": 7
+    },
+    {
+      "bookId": 1,
+      "quantity": 4,
+      "purchaseId": 6,
+      "id": 8
+    },
+    {
+      "bookId": 1,
+      "quantity": 3,
+      "purchaseId": 2,
+      "id": 9
+    },
+    {
+      "bookId": 2,
+      "quantity": 4,
+      "purchaseId": 2,
+      "id": 10
+    },
+    {
+      "bookId": 3,
+      "quantity": 6,
+      "purchaseId": 7,
+      "id": 11
+    },
+    {
+      "bookId": 3,
+      "quantity": 7,
+      "purchaseId": 2,
+      "id": 12
+    },
+    {
+      "bookId": 1,
+      "quantity": 1,
+      "purchaseId": 8,
+      "id": 13
+    },
+    {
+      "bookId": 1,
+      "quantity": 1,
+      "purchaseId": 9,
+      "id": 14
+>>>>>>> 7116a98d95c6cb7b2111f4b672bfdab2b2dcecb9
     }
   ]
 }
