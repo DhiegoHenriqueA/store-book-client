@@ -59,6 +59,7 @@ const addItemToCar = () => {
           <div class="text-h6">{{ currentBook.title }}</div>
           <div class="text-subtitle2">{{ currentBook.caption }}</div>
           <div class="text">
+            <!-- TODO- Verificar -->
             {{ currentBook.author.name }}, {{ currentBook.category.name }}
           </div>
           <div class="q-mt-md">

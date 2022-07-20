@@ -172,6 +172,15 @@
       "userId": 2,
       "status": "Pendente",
       "id": 7
+    },
+    {
+      "status": "Realizado",
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "status": "Pendente",
+      "id": 9
     }
   ],
   "purchasesItems": [
@@ -246,6 +255,18 @@
       "quantity": 7,
       "purchaseId": 2,
       "id": 12
+    },
+    {
+      "bookId": 1,
+      "quantity": 1,
+      "purchaseId": 8,
+      "id": 13
+    },
+    {
+      "bookId": 1,
+      "quantity": 1,
+      "purchaseId": 9,
+      "id": 14
     }
   ]
 }
