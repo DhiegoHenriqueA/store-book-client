@@ -14,12 +14,17 @@ let totalString = ref('')
 
 onMounted(async () => {
   books = await purchaseStore.getShoppingCart(user.id)
-  purchaseStore.shoppingCart.purchasesItems.forEach(books => {
-    valorLivro = parseInt(books.book.amount.replace('R$', '').replace(',', '.'))
-    qtdLivro = books.quantity
-    total += valorLivro * qtdLivro
-  });
-  totalString.value = total.toString().replace('.', ',')
+  console.log(Object.keys(purchaseStore.shoppingCart).length === 0)
+  if (purchaseStore.shoppingCart) {
+    purchaseStore.shoppingCart.purchasesItems.forEach(books => {
+      valorLivro = parseInt(books.book.amount.replace('R$', '').replace(',', '.'))
+      qtdLivro = books.quantity
+      total += valorLivro * qtdLivro
+    });
+    totalString.value = total.toString().replace('.', ',')
+  }
+  
+
 });
 
 const finishedShoppingCartPurchase = () => {
@@ -28,7 +33,6 @@ const finishedShoppingCartPurchase = () => {
     .then((data) => {
       router.push({
         name: "purchaseFinished",
-        params: { id: purchaseStore.shoppingCart.id },
       });
     })
     .catch((error) => {
@@ -42,15 +46,16 @@ const finishedShoppingCartPurchase = () => {
       <div class="q-pa-md">
         <q-card-section>
           <div class="text-h6">Carrinho de compras</div>
-          <div class="text-subtitle2">Aqui fica os itens</div>
+          <div class="text-subtitle2" v-if="Object.keys(purchaseStore.shoppingCart).length > 0">Aqui fica os itens</div>
         </q-card-section>
 
-        <q-markup-table>
+        <q-markup-table v-if="Object.keys(purchaseStore.shoppingCart).length > 0">
           <thead>
             <tr class="shadow-2 rounded-borders">
               <th class="text-left">Capa</th>
               <th class="text-center">Titulo</th>
               <th class="text-center">Avaliação</th>
+              <th class="text-right">Quantidade</th>
               <th class="text-right">Valor</th>
             </tr>
           </thead>
@@ -67,18 +72,23 @@ const finishedShoppingCartPurchase = () => {
                 <q-rating v-model="item.book.rating" max="5" size="1.5em" color="yellow" icon="star_border"
                   icon-selected="star" icon-half="star_half" readonly no-dimming />
               </td>
+              <td class="text-right">{{ item.quantity }}</td>
               <td class="text-right">{{ item.book.amount }}</td>
             </tr>
           </tbody>
         </q-markup-table>
-        <div class="row total q-mt-md">
+        <div v-if="Object.keys(purchaseStore.shoppingCart).length > 0" class="row total q-mt-md" >
           <div class="col-6 row total">
             <div class="col-6 text-h5" style="justify-content: center;">Total: </div>
             <div class="text-h5">R$ {{ totalString }}</div>
           </div>
         </div>
-        <div class="q-mt-md">
-          <q-btn  @click="finishedShoppingCartPurchase" class="full-width bg-teal-6" style="color: white" label="Finalizar compra" />
+        <div class="q-mt-md" v-if="Object.keys(purchaseStore.shoppingCart).length > 0">
+          <q-btn @click="finishedShoppingCartPurchase" class="full-width bg-teal-6" style="color: white"
+            label="Finalizar compra" />
+        </div>
+        <div v-else>
+          <div class="col-6 text-h5" style="justify-content: center;">Carrinho Vazio</div>
         </div>
       </div>
     </div>

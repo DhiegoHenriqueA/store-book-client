@@ -27,9 +27,13 @@ export const usePurchaseStore = defineStore({
               
             );
           }
+          this.shoppingCart = data[0];
+          
+        }else{
+          this.shoppingCart = {}
         }
 
-        this.shoppingCart = data[0];
+
 
         return Promise.resolve();
       } catch (e) {
@@ -227,6 +231,8 @@ export const usePurchaseStore = defineStore({
           `http://localhost:4000/purchases/${id}`,
           { status: "Realizado" }
         );
+          
+        console.log(this.shoppingCart)
 
         const index = this.pendingPurchases.findIndex(
           (purchase) => purchase.id === id
@@ -235,10 +241,10 @@ export const usePurchaseStore = defineStore({
         const finishedPurchase = Object.assign(this.shoppingCart);
         finishedPurchase.status = "Realizado";
 
-        // this.finishedPurchases.push(finishedPurchase);
-        // this.shoppingCart = {}
+        this.finishedPurchases.push(finishedPurchase);
+        this.shoppingCart = {}
 
-        return Promise.resolve();
+        return Promise.resolve(finishedPurchase);
       } catch (e) {
         console.error(e);
         if (e.response.status === 404)

@@ -34,7 +34,6 @@ export const useUserStore = defineStore({
           await purchaseStore.getPendingPurchases(this.user.id);
           await purchaseStore.getShoppingCart(this.user.id);
 
-          console.log("aaaa", this.user.id);
           return Promise.resolve();
         })
         .catch(() => {

@@ -23,26 +23,17 @@ const logout = () => {
           <q-toolbar>
             <q-space></q-space>
             <q-avatar>
-              <img
-                src="https://w7.pngwing.com/pngs/732/9/png-transparent-computer-icons-book-open-book-angle-rectangle-logo.png"
-              />
+              <img 
+                src="https://w7.pngwing.com/pngs/732/9/png-transparent-computer-icons-book-open-book-angle-rectangle-logo.png" />
             </q-avatar>
 
-            <q-toolbar-title>Store Book</q-toolbar-title>
-            <q-card
-              class="no-border no-shadow bg-transparent"
-              style="width: 300px"
-            >
+            <q-toolbar-title >Store Book</q-toolbar-title>
+            <q-card class="no-border no-shadow bg-transparent" style="width: 300px">
               <q-card-section class="q-pa-sm">
                 <q-input v-model="search" placeholder="Buscar livro">
                   <template v-slot:append>
                     <q-icon v-if="!search" name="search" />
-                    <q-icon
-                      v-else
-                      name="clear"
-                      class="cursor-pointer"
-                      @click="search = ''"
-                    />
+                    <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
                   </template>
                 </q-input>
               </q-card-section>
@@ -53,21 +44,10 @@ const logout = () => {
         <div class="col-3">
           <q-toolbar>
             <q-space></q-space>
-            <div
-              class="q-gutter-sm row items-center no-wrap"
-              style="margin-top: 15px"
-            >
+            <div class="q-gutter-sm row items-center no-wrap" style="margin-top: 15px">
               <div v-if="userStore.loggedIn" class="q-mr-lg">
-                <q-btn
-                  round
-                  dense
-                  flat
-                  icon="fas fa-heart"
-                  style="color: #9d4182 !important"
-                  type="a"
-                  href="https://github.com/sponsors/pratik227"
-                  target="_blank"
-                >
+                <q-btn round dense flat icon="fas fa-heart" style="color: #9d4182 !important" type="a"
+                  href="https://github.com/sponsors/pratik227" target="_blank">
                 </q-btn>
                 <q-btn round dense flat color="white" icon="notifications">
                   <q-badge color="red" text-color="white" floating> 5 </q-badge>
@@ -75,24 +55,14 @@ const logout = () => {
                     <q-list style="min-width: 100px">
                       <messages></messages>
                       <q-card class="text-center no-shadow no-border">
-                        <q-btn
-                          label="View All"
-                          style="max-width: 120px !important"
-                          flat
-                          dense
-                          class="text-indigo-8"
-                        >
+                        <q-btn label="View All" style="max-width: 120px !important" flat dense class="text-indigo-8">
                         </q-btn>
                       </q-card>
                     </q-list>
                   </q-menu>
                 </q-btn>
                 <!-- TODO-Deixar dinamico o carrinho -->
-                <q-btn
-                  round
-                  flat
-                  :to="{ name: 'shopping-cart', params: { id: 1 } }"
-                >
+                <q-btn round flat :to="{ name: 'shopping-cart', params: { id: 1 } }">
                   <q-badge color="red" text-color="white" floating> 5 </q-badge>
                   <q-icon name="shopping_cart" />
                 </q-btn>
@@ -104,24 +74,13 @@ const logout = () => {
                     <q-list style="min-width: 100px">
                       <messages></messages>
                       <q-card class="text-center no-shadow no-border">
-                        <q-btn
-                          label="Minhas Compras"
-                          style="max-width: 180px !important"
-                          flat
-                          dense
-                          class="text-indigo-8 q-pa-sm"
-                        >
+                        <q-btn label="Minhas Compras" style="max-width: 180px !important" flat dense
+                          class="text-indigo-8 q-pa-sm">
                         </q-btn>
                       </q-card>
                       <q-card class="text-center no-shadow no-border">
-                        <q-btn
-                          label="Sair"
-                          style="max-width: 180px !important"
-                          flat
-                          dense
-                          class="text-indigo-8 q-pa-sm"
-                          @click="logout()"
-                        >
+                        <q-btn label="Sair" style="max-width: 180px !important" flat dense class="text-indigo-8 q-pa-sm"
+                          @click="logout()">
                         </q-btn>
                       </q-card>
                     </q-list>
@@ -140,7 +99,7 @@ const logout = () => {
       <ListCategory />
     </q-header>
 
-    <q-page-container class="bg-grey-2">
+    <q-page-container class="bg-grey-2" style="height: 100vh;">
       <router-view />
     </q-page-container>
   </q-layout>
